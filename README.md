@@ -22,7 +22,9 @@ Note: Application will prompt you to give permission to access network,its norma
 
 Usage:
 Run the VirtualMouseServer class in dist directory using following command
-java VirtualMouseServer
+
+
+`java VirtualMouseServer`
 
 Install the VirtualMouse.jar onto your mobile
 

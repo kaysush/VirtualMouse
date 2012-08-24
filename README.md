@@ -4,12 +4,20 @@ VirtualMouse
 A J2ME app which lets you control your PC mouse over a network.
 
 Requirements (PC)
+
+
 JRE 7 (if using the compiled class)
+
+
 JDK 1.5+ and compatible JRE to compile server from source
 
 
 Requirements (Mobile)
+
+
 Any CLDC 1.1 and MIDP 2.0 compatible device.
+
+
 Note: Application will prompt you to give permission to access network,its normal behaviour
 
 Usage:

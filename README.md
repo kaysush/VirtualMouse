@@ -21,7 +21,7 @@ Any `CLDC 1.1` and `MIDP 2.0` compatible device.
 Note: Application will prompt you to give permission to access network,its normal behaviour
 
 Usage:
-Run the VirtualMouseServer class in dist directory using following command
+Run the VirtualMouseServer class in `dist` directory using following command ( or compile from source in `src` directory)
 
 
 `java VirtualMouseServer`

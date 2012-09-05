@@ -8,6 +8,7 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class VirtualMouseServer
 {
@@ -77,17 +78,24 @@ public class VirtualMouseServer
 					else if(data[i]==0)
 					break;
 				}
-				System.out.println("length of bytes : "+l);
 				String r=new String(data,0,l);
 				System.out.println();
 				outStream.write("got".getBytes());
 				outStream.flush();
 				int index=r.indexOf("+");
-				System.out.println("length of response : "+r.length());
+				int index1=r.lastIndexOf("+");
 				String x=r.substring(0,index);
-				String y=r.substring(index+1);
-				System.out.println("X"+x+"Y"+y);
-				robo.mouseMove(Integer.parseInt(x)*4,Integer.parseInt(y)*2);
+				String y=r.substring(index+1,index1);
+				String command=r.substring(index1+1);
+				if(command.equals("d"))
+					robo.mouseMove(Integer.parseInt(x)*4,Integer.parseInt(y)*2);
+
+				else
+				{	
+					robo.mousePress(InputEvent.BUTTON1_MASK);
+					robo.mouseRelease(InputEvent.BUTTON1_MASK);
+
+				}
 				}
 			}
 				catch(AWTException e)

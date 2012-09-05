@@ -85,10 +85,13 @@ public void destroyApp(boolean u)
 class TouchEvents extends Canvas
 {
 private int x,y;
+private String command;
 private String ip;
 private Display display;
+private boolean dragged=false;
 public TouchEvents(String ip,Display display)
 {
+    this.command="d";
     this.ip=ip;
     this.display=display;
     x=10;
@@ -122,8 +125,10 @@ public void init()
                 while(true)
                 {
                     
-                    out.write((x+"+"+y).getBytes());
+                    out.write((x+"+"+y+"+"+command).getBytes());
                     out.flush();
+                    if(command.equals("c"))
+                        command="d";
                    
                     do
                     {
@@ -156,17 +161,28 @@ g.drawString("X : "+x+" Y: "+y,x+4,y+4,Graphics.TOP | Graphics.LEFT);
 }
 public void pointerPressed(int x, int y)
 {
+        dragged=false;
+        //System.out.println("Pointer Pressed");
 	this.x=x;
 	this.y=y;
 	repaint();
 }
 protected void pointerDragged(int x, int y)
 {
-	this.x = x;
-	this.y = y;
-
-	repaint();
+    dragged=true;
+    //System.out.println("Pointer Dragged");
+    this.x = x;
+    this.y = y;
+    repaint();
 	
+}
+protected void pointerReleased(int x ,int y)
+{
+    if(!dragged)
+    {
+        command="c";
+        System.out.println("Clicked");
+    }
 }
 public String getString()
 {
